@@ -1,0 +1,347 @@
+import React, { useContext } from 'react';
+import { AudioContext } from '../../context/AudioContext';
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Radio, ListMusic, Loader2 } from 'lucide-react';
+
+const PersistentPlayer = () => {
+  const { 
+    isPlaying, 
+    volume, 
+    isMuted, 
+    isBuffering, 
+    togglePlay, 
+    changeVolume, 
+    toggleMute 
+  } = useContext(AudioContext);
+
+  const handleVolumeChange = (e) => {
+    changeVolume(parseFloat(e.target.value));
+  };
+
+  return (
+    <div className="persistent-player-bar" id="persistent_player_bar">
+      <div className="persistent-player-container">
+        {/* Left: Station info and small logo */}
+        <div className="player-station-meta">
+          <div className="station-logo-mini-container">
+            <img src="/logo.png" alt="Primaveral Logo" className="station-logo-mini" />
+          </div>
+          <div className="station-meta-text">
+            <span className="station-meta-title">Primaveral Stereo 104.4 FM</span>
+            <div className="station-meta-status">
+              <span className="live-bullet-pulse"></span>
+              <span className="live-status-lbl">EN VIVO - la que todos escuchan</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Center: Playback Controls */}
+        <div className="player-playback-controls">
+          <button className="control-btn skip-btn" title="Emisora Anterior" id="pb_prev">
+            <SkipBack size={18} fill="currentColor" />
+          </button>
+          
+          <button 
+            onClick={togglePlay} 
+            className="control-btn play-btn-main" 
+            title={isPlaying ? "Pausar" : "Reproducir en vivo"}
+            disabled={isBuffering}
+            id="pb_play_toggle"
+          >
+            {isBuffering ? (
+              <Loader2 size={20} className="spinner-icon" />
+            ) : isPlaying ? (
+              <Pause size={20} fill="white" color="white" />
+            ) : (
+              <Play size={20} fill="white" color="white" className="play-icon-offset" />
+            )}
+          </button>
+          
+          <button className="control-btn skip-btn" title="Siguiente Emisora" id="pb_next">
+            <SkipForward size={18} fill="currentColor" />
+          </button>
+        </div>
+
+        {/* Right: Volume & More Options */}
+        <div className="player-right-controls">
+          {/* Volume Group */}
+          <div className="volume-control-group">
+            <button 
+              onClick={toggleMute} 
+              className="bottom-volume-btn"
+              title={isMuted ? "Activar sonido" : "Silenciar"}
+              id="pb_mute"
+            >
+              {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+            <input 
+              type="range" 
+              min="0" 
+              max="1" 
+              step="0.05" 
+              value={isMuted ? 0 : volume} 
+              onChange={handleVolumeChange} 
+              className="bottom-volume-slider"
+              title="Volumen"
+              id="pb_volume"
+            />
+          </div>
+
+          {/* En Vivo indicator */}
+          <div className="live-pill-bottom">
+            <Radio size={12} className="live-icon-bounce" />
+            <span>EN VIVO</span>
+          </div>
+
+          {/* List Menu Icon */}
+          <button className="control-btn menu-list-btn" title="Lista de canales" id="pb_list_channels">
+            <ListMusic size={18} />
+          </button>
+        </div>
+      </div>
+
+      <style>{`
+        .persistent-player-bar {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 80px;
+          background-color: #0c1020;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          padding: 0 24px;
+          box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .persistent-player-container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+        }
+        
+        /* Left: Logo & Meta */
+        .player-station-meta {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 260px;
+        }
+        
+        .station-logo-mini-container {
+          width: 48px;
+          height: 48px;
+          border-radius: 8px;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .station-logo-mini {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        
+        .station-meta-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.3;
+        }
+        
+        .station-meta-title {
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 0.95rem;
+          color: white;
+        }
+        
+        .station-meta-status {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        
+        .live-bullet-pulse {
+          width: 6px;
+          height: 6px;
+          background-color: var(--color-red);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        .live-status-lbl {
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          color: var(--text-gray);
+        }
+        
+        /* Center: Playback Controls */
+        .player-playback-controls {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+        
+        .control-btn {
+          color: #94a3b8;
+          transition: var(--transition-smooth);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .control-btn:hover:not(:disabled) {
+          color: white;
+        }
+        
+        .skip-btn {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .play-btn-main {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background-color: var(--color-red);
+          color: white;
+          box-shadow: 0 4px 10px rgba(214, 26, 33, 0.3);
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .play-btn-main:hover:not(:disabled) {
+          transform: scale(1.08);
+          background-color: #df2229;
+          box-shadow: 0 4px 15px rgba(214, 26, 33, 0.5);
+          color: white;
+        }
+        
+        .play-btn-main:active:not(:disabled) {
+          transform: scale(0.95);
+        }
+
+        .play-btn-main:disabled {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
+
+        .play-icon-offset {
+          margin-left: 2px;
+        }
+        
+        /* Right: Volume & More */
+        .player-right-controls {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          min-width: 260px;
+          justify-content: flex-end;
+        }
+        
+        .volume-control-group {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 120px;
+        }
+        
+        .bottom-volume-btn {
+          color: #94a3b8;
+          transition: var(--transition-smooth);
+        }
+        
+        .bottom-volume-btn:hover {
+          color: white;
+        }
+        
+        .bottom-volume-slider {
+          width: 100%;
+          height: 4px;
+          border-radius: 4px;
+          background: #475569;
+          outline: none;
+          accent-color: var(--color-red);
+          cursor: pointer;
+        }
+        
+        .live-pill-bottom {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background-color: rgba(214, 26, 33, 0.15);
+          border: 1px solid rgba(214, 26, 33, 0.3);
+          color: var(--color-red);
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 0.75rem;
+          letter-spacing: 0.5px;
+        }
+        
+        .live-icon-bounce {
+          animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        .menu-list-btn {
+          width: 32px;
+          height: 32px;
+        }
+
+        .spinner-icon {
+          animation: spin 1.5s linear infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+          .player-station-meta {
+            min-width: auto;
+          }
+          
+          .player-right-controls {
+            min-width: auto;
+          }
+          
+          .volume-control-group {
+            display: none; /* Hide volume controls on small screen to save space */
+          }
+        }
+        
+        @media (max-width: 600px) {
+          .persistent-player-bar {
+            height: 70px;
+            padding: 0 12px;
+          }
+          
+          .station-logo-mini-container {
+            display: none; /* Hide logo on mobile */
+          }
+          
+          .live-pill-bottom {
+            display: none; /* Hide pill on mobile */
+          }
+          
+          .menu-list-btn {
+            display: none;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default PersistentPlayer;
