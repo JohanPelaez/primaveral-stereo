@@ -73,8 +73,9 @@ const AboutView = () => {
         .about-title {
           font-family: var(--font-display);
           font-size: 2.5rem;
-          color: white;
+          color: var(--text-white);
           margin-bottom: 8px;
+          transition: var(--transition-smooth);
         }
         
         .about-subtitle {
@@ -92,18 +93,20 @@ const AboutView = () => {
         .about-main-text h2 {
           font-family: var(--font-display);
           font-size: 1.6rem;
-          color: white;
+          color: var(--text-white);
           margin-bottom: 16px;
           border-left: 4px solid var(--color-red);
           padding-left: 12px;
+          transition: var(--transition-smooth);
         }
         
         .about-main-text p {
           font-family: var(--font-body);
           font-size: 1.05rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.7;
           margin-bottom: 16px;
+          transition: var(--transition-smooth);
         }
         
         /* Values Grid */
@@ -114,8 +117,8 @@ const AboutView = () => {
         }
         
         .value-card {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           padding: 24px;
           border-radius: 8px;
           display: flex;
@@ -126,8 +129,8 @@ const AboutView = () => {
         
         .value-card:hover {
           transform: translateY(-3px);
-          background: rgba(255, 255, 255, 0.05);
-          border-color: rgba(255, 255, 255, 0.1);
+          background: var(--bg-glass-heavy);
+          border-color: var(--border-glass);
         }
         
         .value-icon {
@@ -149,14 +152,16 @@ const AboutView = () => {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 1.2rem;
-          color: white;
+          color: var(--text-white);
+          transition: var(--transition-smooth);
         }
         
         .value-card p {
           font-family: var(--font-body);
           font-size: 0.95rem;
-          color: #94a3b8;
+          color: var(--text-gray);
           line-height: 1.5;
+          transition: var(--transition-smooth);
         }
         
         @media (max-width: 768px) {

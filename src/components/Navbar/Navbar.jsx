@@ -61,8 +61,8 @@ const Navbar = ({ currentView, setCurrentView }) => {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 16px;
-          transform: translateY(-20px);
-          z-index: 10;
+          transform: translateY(12px);
+          z-index: 30;
           position: relative;
         }
         
@@ -120,14 +120,29 @@ const Navbar = ({ currentView, setCurrentView }) => {
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
+        /* Bottom Line Indicator base */
+        .nav-tab::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 6px;
+          background-color: rgba(255, 255, 255, 0.7);
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 3;
+        }
+
         /* Hover Effects */
         .nav-tab:hover {
-          transform: translateY(-4px);
-          filter: brightness(1.1);
+          filter: brightness(1.15);
         }
         
-        .nav-tab:hover .nav-tab-content {
-          transform: scale(1.05);
+        .nav-tab:hover::before {
+          transform: scaleX(1);
         }
         
         /* Active & Inactive dimming */
@@ -137,25 +152,19 @@ const Navbar = ({ currentView, setCurrentView }) => {
         }
         
         .nav-tab.active {
-          box-shadow: inset 0 -6px 0 rgba(255, 255, 255, 0.5), inset 0 6px 15px rgba(0, 0, 0, 0.3);
-          transform: translateY(0);
+          box-shadow: inset 0 6px 15px rgba(0, 0, 0, 0.35);
         }
         
         .nav-tab.active::before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 6px;
-          background-color: rgba(255, 255, 255, 0.6);
-          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+          transform: scaleX(1);
+          background-color: #ffffff;
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
         }
         
         /* Mobile styling */
         @media (max-width: 900px) {
           .main-navbar {
-            transform: translateY(-10px);
+            transform: translateY(12px);
           }
           
           .navbar-grid {

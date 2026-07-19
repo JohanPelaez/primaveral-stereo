@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AudioProvider } from './context/AudioContext';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -15,6 +15,20 @@ import SpeakersView from './components/Views/SpeakersView';
 
 function AppContent() {
   const [currentView, setCurrentView] = useState('home');
+  const [theme, setTheme] = useState('light');
+
+  // Toggle dark-theme class on body
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   // Breadcrumb/view identifier back to home
   const renderBreadcrumbs = () => {
@@ -55,7 +69,7 @@ function AppContent() {
           }
           
           .breadcrumb-home-link:hover {
-            color: white;
+            color: var(--text-white);
             text-decoration: underline;
           }
           
@@ -64,7 +78,7 @@ function AppContent() {
           }
           
           .breadcrumb-current {
-            color: white;
+            color: var(--text-white);
             font-weight: 500;
           }
         `}</style>
@@ -75,7 +89,7 @@ function AppContent() {
   return (
     <div className="app-container">
       {/* Brand Header */}
-      <Header setCurrentView={setCurrentView} />
+      <Header setCurrentView={setCurrentView} theme={theme} toggleTheme={toggleTheme} />
 
       {/* Tabs Menu Navigation Bar */}
       <Navbar currentView={currentView} setCurrentView={setCurrentView} />
@@ -83,14 +97,12 @@ function AppContent() {
       {/* Breadcrumbs for sub-pages */}
       {renderBreadcrumbs()}
 
+      {/* Full Width Hero Banner for Home view */}
+      {currentView === 'home' && <Hero />}
+
       {/* Swappable Main Content Area */}
       <main className="main-content">
-        {currentView === 'home' && (
-          <>
-            <Hero />
-            <HomeView setCurrentView={setCurrentView} />
-          </>
-        )}
+        {currentView === 'home' && <HomeView setCurrentView={setCurrentView} />}
         {currentView === 'about' && <AboutView />}
         {currentView === 'schedule' && <ScheduleView />}
         {currentView === 'institutional' && <InstitutionalView />}

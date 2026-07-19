@@ -88,17 +88,19 @@ const SpeakersView = () => {
         }
         
         .speakers-header {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--border-glass);
           padding-bottom: 24px;
           margin-bottom: 32px;
           text-align: center;
+          transition: var(--transition-smooth);
         }
         
         .speakers-title {
           font-family: var(--font-display);
           font-size: 2.5rem;
-          color: white;
+          color: var(--text-white);
           margin-bottom: 8px;
+          transition: var(--transition-smooth);
         }
         
         .speakers-subtitle {
@@ -115,8 +117,8 @@ const SpeakersView = () => {
         }
         
         .speaker-card {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           border-radius: 12px;
           overflow: hidden;
           display: grid;
@@ -127,8 +129,8 @@ const SpeakersView = () => {
         
         .speaker-card:hover {
           transform: translateY(-4px);
-          background: rgba(255, 255, 255, 0.04);
-          border-color: rgba(255, 255, 255, 0.1);
+          background: var(--bg-glass-heavy);
+          border-color: var(--border-glass);
           box-shadow: var(--shadow-premium);
         }
         
@@ -180,8 +182,9 @@ const SpeakersView = () => {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 1.4rem;
-          color: white;
+          color: var(--text-white);
           line-height: 1.2;
+          transition: var(--transition-smooth);
         }
         
         .speaker-role {
@@ -194,8 +197,9 @@ const SpeakersView = () => {
         .speaker-bio {
           font-family: var(--font-body);
           font-size: 0.85rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.5;
+          transition: var(--transition-smooth);
         }
         
         .speaker-shows {
@@ -206,7 +210,8 @@ const SpeakersView = () => {
         
         .speaker-shows strong {
           font-size: 0.8rem;
-          color: white;
+          color: var(--text-white);
+          transition: var(--transition-smooth);
         }
         
         .shows-list {
@@ -219,11 +224,12 @@ const SpeakersView = () => {
           font-family: var(--font-display);
           font-weight: 600;
           font-size: 0.7rem;
-          color: #cbd5e1;
-          background: rgba(255, 255, 255, 0.05);
+          color: var(--text-gray);
+          background: var(--bg-glass-heavy);
           padding: 2px 8px;
           border-radius: 4px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-glass);
+          transition: var(--transition-smooth);
         }
         
         /* Socials */
@@ -241,8 +247,8 @@ const SpeakersView = () => {
           align-items: center;
           justify-content: center;
           color: var(--text-gray);
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           transition: var(--transition-smooth);
         }
         

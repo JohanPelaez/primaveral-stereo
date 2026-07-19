@@ -226,9 +226,10 @@ const HomeView = ({ setCurrentView }) => {
         .card-text {
           font-family: var(--font-body);
           font-size: 0.95rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           margin-bottom: 24px;
           line-height: 1.6;
+          transition: var(--transition-smooth);
         }
         
         .card-action-btn {
@@ -303,7 +304,8 @@ const HomeView = ({ setCurrentView }) => {
           display: flex;
           flex-direction: column;
           border-radius: 12px;
-          background: rgba(15, 23, 42, 0.45);
+          background: var(--bg-card-dark);
+          transition: var(--transition-smooth);
         }
         
         .widget-header {
@@ -311,8 +313,9 @@ const HomeView = ({ setCurrentView }) => {
           align-items: center;
           gap: 10px;
           margin-bottom: 20px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--border-glass);
           padding-bottom: 10px;
+          transition: var(--transition-smooth);
         }
         
         .widget-header h3 {
@@ -357,13 +360,15 @@ const HomeView = ({ setCurrentView }) => {
           font-family: var(--font-display);
           font-weight: 600;
           font-size: 0.95rem;
-          color: white;
+          color: var(--text-white);
+          transition: var(--transition-smooth);
         }
         
         .schedule-info p {
           font-family: var(--font-body);
           font-size: 0.8rem;
-          color: #94a3b8;
+          color: var(--text-gray);
+          transition: var(--transition-smooth);
         }
         
         .widget-footer-text {
@@ -401,9 +406,10 @@ const HomeView = ({ setCurrentView }) => {
         .widget-card-desc {
           font-family: var(--font-body);
           font-size: 0.85rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.5;
           margin-bottom: 16px;
+          transition: var(--transition-smooth);
         }
         
         .widget-action-btn {
@@ -454,10 +460,11 @@ const HomeView = ({ setCurrentView }) => {
           font-weight: 800;
           font-size: 1.3rem;
           letter-spacing: 1px;
-          color: white;
+          color: var(--text-white);
           border-left: 4px solid var(--color-red);
           padding-left: 12px;
           margin-bottom: 8px;
+          transition: var(--transition-smooth);
         }
         
         /* Responsive break points */

@@ -58,10 +58,11 @@ const Footer = () => {
         .site-footer {
           width: 100%;
           background-color: #080c16;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding: 40px 24px 20px 24px;
           color: #94a3b8;
           margin-top: 60px;
+          transition: var(--transition-smooth);
         }
         
         .footer-container {
@@ -84,16 +85,17 @@ const Footer = () => {
         .footer-logo {
           height: 60px;
           object-fit: contain;
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
         }
         
         .footer-slogan {
           font-family: 'Outfit', cursive, sans-serif;
           font-style: italic;
           font-size: 0.95rem;
-          color: #e2e8f0;
+          color: #cbd5e1;
           margin-top: -4px;
           margin-left: 100px;
+          transition: var(--transition-smooth);
         }
         
         /* Headers for footer groups */
@@ -102,8 +104,9 @@ const Footer = () => {
           font-weight: 700;
           font-size: 0.85rem;
           letter-spacing: 1px;
-          color: white;
+          color: #f8fafc;
           margin-bottom: 16px;
+          transition: var(--transition-smooth);
         }
         
         /* Social Icons */

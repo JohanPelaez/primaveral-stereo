@@ -1,8 +1,8 @@
 import React from 'react';
 import SocialLinks from './SocialLinks';
-import { Radio } from 'lucide-react';
+import { Radio, Sun, Moon } from 'lucide-react';
 
-const Header = ({ setCurrentView }) => {
+const Header = ({ setCurrentView, theme, toggleTheme }) => {
   return (
     <header className="site-header">
       <div className="header-container">
@@ -20,6 +20,16 @@ const Header = ({ setCurrentView }) => {
         {/* Right Section: Social & Live Indicator */}
         <div className="header-actions">
           <SocialLinks />
+
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={toggleTheme} 
+            className="theme-toggle-btn" 
+            title={theme === 'light' ? 'Activar tema oscuro' : 'Activar tema claro'}
+            id="theme_toggle_btn"
+          >
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
           
           {/* Live Indicator Pill */}
           <div className="live-indicator-pill" id="live_indicator_badge">
@@ -38,10 +48,16 @@ const Header = ({ setCurrentView }) => {
       <style>{`
         .site-header {
           width: 100%;
-          padding: 16px 24px;
-          background: linear-gradient(to bottom, rgba(9, 14, 26, 0.95) 0%, rgba(9, 14, 26, 0.8) 100%);
-          backdrop-filter: blur(8px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          padding: 36px 24px 80px 24px;
+          background: linear-gradient(to bottom, #090e1a 0%, rgba(9, 14, 26, 0.95) 45%, rgba(9, 14, 26, 0.6) 75%, transparent 100%);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border-bottom: none;
+          margin-bottom: -56px;
+          position: relative;
+          z-index: 20;
+          pointer-events: none;
+          transition: var(--transition-smooth);
         }
         
         .header-container {
@@ -52,6 +68,7 @@ const Header = ({ setCurrentView }) => {
           justify-content: space-between;
           flex-wrap: wrap;
           gap: 16px;
+          pointer-events: auto;
         }
         
         .brand-wrapper {
@@ -63,26 +80,48 @@ const Header = ({ setCurrentView }) => {
         .header-logo {
           height: 70px;
           object-fit: contain;
-          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
         }
         
         .brand-slogan {
           font-family: 'Outfit', cursive, sans-serif;
           font-style: italic;
           font-size: 1.1rem;
-          color: #e2e8f0;
+          color: #cbd5e1;
           margin-top: -6px;
           margin-left: 120px;
-          font-weight: 300;
+          font-weight: 500;
           letter-spacing: 0.5px;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+          transition: var(--transition-smooth);
         }
         
         .header-actions {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 20px;
         }
+
+        .theme-toggle-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.08);
+          color: #f8fafc;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle-btn:hover {
+          transform: translateY(-2px);
+          background: rgba(255, 255, 255, 0.15);
+          color: var(--color-orange);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
         
         /* Live Indicator Pill */
         .live-indicator-pill {

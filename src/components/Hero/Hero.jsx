@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="hero-section">
       {/* Background Image with Dark Overlay */}
       <div className="hero-background-overlay"></div>
-      
+
       <div className="hero-container container">
         <div className="hero-grid">
           {/* Left Column: Heading and Brand Info */}
@@ -34,11 +34,11 @@ const Hero = () => {
         {/* Player and WhatsApp Action Button */}
         <div className="hero-actions-container">
           <HeroPlayer />
-          
-          <a 
-            href="https://wa.me/573201234567?text=Hola%20Primaveral%20Stereo!%20Un%20saludo..." 
-            target="_blank" 
-            rel="noopener noreferrer" 
+
+          <a
+            href="https://wa.me/573201234567?text=Hola%20Primaveral%20Stereo!%20Un%20saludo..."
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-whatsapp-hero"
             id="hero_whatsapp_btn"
           >
@@ -52,12 +52,13 @@ const Hero = () => {
       <style>{`
         .hero-section {
           width: 100%;
-          min-height: 520px;
+          min-height: 640px;
           position: relative;
-          background-image: url('/hero_bg.png');
+          background-image: url('/gomez_plata.jpg');
           background-size: cover;
-          background-position: center;
-          padding: 80px 0 60px 0;
+          background-position: center top;
+          padding: 240px 0 60px 0;
+          margin-top: -196px;
           display: flex;
           align-items: center;
           border-bottom: 3px solid var(--color-red);
@@ -195,7 +196,8 @@ const Hero = () => {
         /* Mobile responsive adjustments */
         @media (max-width: 900px) {
           .hero-section {
-            padding: 60px 0 40px 0;
+            padding: 220px 0 40px 0;
+            margin-top: -196px;
             min-height: auto;
           }
           

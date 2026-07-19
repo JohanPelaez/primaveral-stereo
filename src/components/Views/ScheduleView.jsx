@@ -90,17 +90,19 @@ const ScheduleView = () => {
         }
         
         .schedule-header {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--border-glass);
           padding-bottom: 24px;
           margin-bottom: 32px;
           text-align: center;
+          transition: var(--transition-smooth);
         }
         
         .schedule-title {
           font-family: var(--font-display);
           font-size: 2.5rem;
-          color: white;
+          color: var(--text-white);
           margin-bottom: 8px;
+          transition: var(--transition-smooth);
         }
         
         .schedule-subtitle {
@@ -123,16 +125,16 @@ const ScheduleView = () => {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 1rem;
-          color: #94a3b8;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          color: var(--text-gray);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           transition: var(--transition-smooth);
         }
         
         .tab-btn:hover {
-          color: white;
-          background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(255, 255, 255, 0.15);
+          color: var(--text-white);
+          background: var(--bg-glass-heavy);
+          border-color: var(--border-glass);
         }
         
         .tab-btn.active-tab-red {
@@ -166,8 +168,8 @@ const ScheduleView = () => {
         .timeline-card {
           display: grid;
           grid-template-columns: 220px 1fr;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           border-radius: 8px;
           padding: 24px;
           align-items: center;
@@ -177,13 +179,13 @@ const ScheduleView = () => {
         
         .timeline-card:hover {
           transform: translateY(-2px);
-          background: rgba(255, 255, 255, 0.04);
-          border-color: rgba(255, 255, 255, 0.1);
+          background: var(--bg-glass-heavy);
+          border-color: var(--border-glass);
         }
         
         .time-badge {
-          background: rgba(255, 255, 255, 0.08);
-          color: white;
+          background: var(--bg-glass-heavy);
+          color: var(--text-white);
           padding: 8px 16px;
           border-radius: 6px;
           display: flex;
@@ -193,8 +195,9 @@ const ScheduleView = () => {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 0.9rem;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-glass);
           width: fit-content;
+          transition: var(--transition-smooth);
         }
         
         .show-details {
@@ -206,7 +209,8 @@ const ScheduleView = () => {
         .show-name {
           font-family: var(--font-display);
           font-size: 1.3rem;
-          color: white;
+          color: var(--text-white);
+          transition: var(--transition-smooth);
         }
         
         .show-meta {
@@ -215,6 +219,7 @@ const ScheduleView = () => {
           gap: 8px;
           font-size: 0.85rem;
           color: var(--text-gray);
+          transition: var(--transition-smooth);
         }
         
         .show-meta-dot {
@@ -224,9 +229,10 @@ const ScheduleView = () => {
         .show-desc {
           font-family: var(--font-body);
           font-size: 0.9rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.5;
           margin-top: 4px;
+          transition: var(--transition-smooth);
         }
         
         .schedule-footer-note {
@@ -235,9 +241,10 @@ const ScheduleView = () => {
           gap: 10px;
           padding-top: 24px;
           margin-top: 32px;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          border-top: 1px solid var(--border-glass);
           font-size: 0.85rem;
           color: var(--text-gray);
+          transition: var(--transition-smooth);
         }
         
         @media (max-width: 768px) {

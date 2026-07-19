@@ -79,17 +79,19 @@ const InstitutionalView = () => {
         }
         
         .inst-header {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid var(--border-glass);
           padding-bottom: 24px;
           margin-bottom: 32px;
           text-align: center;
+          transition: var(--transition-smooth);
         }
         
         .inst-title {
           font-family: var(--font-display);
           font-size: 2.5rem;
-          color: white;
+          color: var(--text-white);
           margin-bottom: 8px;
+          transition: var(--transition-smooth);
         }
         
         .inst-subtitle {
@@ -102,11 +104,12 @@ const InstitutionalView = () => {
           display: flex;
           align-items: center;
           gap: 20px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           border-radius: 8px;
           padding: 20px;
           margin-bottom: 40px;
+          transition: var(--transition-smooth);
         }
         
         .intro-icon-box {
@@ -120,8 +123,9 @@ const InstitutionalView = () => {
         .inst-intro p {
           font-family: var(--font-body);
           font-size: 1rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.6;
+          transition: var(--transition-smooth);
         }
         
         /* Grid */
@@ -132,8 +136,8 @@ const InstitutionalView = () => {
         }
         
         .inst-card {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass);
+          border: 1px solid var(--border-glass);
           border-radius: 12px;
           padding: 24px;
           display: flex;
@@ -144,8 +148,8 @@ const InstitutionalView = () => {
         
         .inst-card:hover {
           transform: translateY(-3px);
-          background: rgba(255, 255, 255, 0.05);
-          border-color: rgba(255, 255, 255, 0.1);
+          background: var(--bg-glass-heavy);
+          border-color: var(--border-glass);
         }
         
         .inst-card-header {
@@ -158,11 +162,12 @@ const InstitutionalView = () => {
           width: 50px;
           height: 50px;
           border-radius: 8px;
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--bg-glass-heavy);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          transition: var(--transition-smooth);
         }
         
         .inst-card-title-group {
@@ -173,8 +178,9 @@ const InstitutionalView = () => {
         .inst-card-title {
           font-family: var(--font-display);
           font-size: 1.25rem;
-          color: white;
+          color: var(--text-white);
           line-height: 1.2;
+          transition: var(--transition-smooth);
         }
         
         .inst-card-agency {
@@ -182,6 +188,7 @@ const InstitutionalView = () => {
           font-size: 0.85rem;
           color: var(--text-gray);
           margin-top: 2px;
+          transition: var(--transition-smooth);
         }
         
         .inst-card-body {
@@ -205,9 +212,10 @@ const InstitutionalView = () => {
         .inst-card-desc {
           font-family: var(--font-body);
           font-size: 0.9rem;
-          color: #cbd5e1;
+          color: var(--text-gray);
           line-height: 1.5;
           margin-top: 4px;
+          transition: var(--transition-smooth);
         }
         
         @media (max-width: 900px) {

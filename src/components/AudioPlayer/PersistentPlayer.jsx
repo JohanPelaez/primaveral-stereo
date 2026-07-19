@@ -115,6 +115,7 @@ const PersistentPlayer = () => {
           box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
+          transition: var(--transition-smooth);
         }
         
         .persistent-player-container {
@@ -163,7 +164,8 @@ const PersistentPlayer = () => {
           font-family: var(--font-display);
           font-weight: 700;
           font-size: 0.95rem;
-          color: white;
+          color: #f8fafc;
+          transition: var(--transition-smooth);
         }
         
         .station-meta-status {
