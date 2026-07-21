@@ -5,13 +5,14 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import PersistentPlayer from './components/AudioPlayer/PersistentPlayer';
 import Footer from './components/Footer/Footer';
+import './assets/styles/App.css';
 
 // Page Views
-import HomeView from './components/Views/HomeView';
-import AboutView from './components/Views/AboutView';
-import ScheduleView from './components/Views/ScheduleView';
-import InstitutionalView from './components/Views/InstitutionalView';
-import SpeakersView from './components/Views/SpeakersView';
+import HomeView from './pages/HomeView';
+import AboutView from './pages/AboutView';
+import ScheduleView from './pages/ScheduleView';
+import InstitutionalView from './pages/InstitutionalView';
+import SpeakersView from './pages/SpeakersView';
 
 function AppContent() {
   const [currentView, setCurrentView] = useState('home');
@@ -48,40 +49,6 @@ function AppContent() {
         </button>
         <span className="breadcrumb-separator">/</span>
         <span className="breadcrumb-current">{titles[currentView]}</span>
-
-        <style>{`
-          .breadcrumb-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 16px 0 16px;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-gray);
-          }
-          
-          .breadcrumb-home-link {
-            color: var(--color-orange);
-            font-weight: 600;
-            transition: var(--transition-smooth);
-          }
-          
-          .breadcrumb-home-link:hover {
-            color: var(--text-white);
-            text-decoration: underline;
-          }
-          
-          .breadcrumb-separator {
-            color: rgba(255, 255, 255, 0.2);
-          }
-          
-          .breadcrumb-current {
-            color: var(--text-white);
-            font-weight: 500;
-          }
-        `}</style>
       </div>
     );
   };

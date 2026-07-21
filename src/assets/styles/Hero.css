@@ -1,0 +1,200 @@
+.hero-section {
+  width: 100%;
+  min-height: 640px;
+  position: relative;
+  background-image: url('/gomez_plata.jpg');
+  background-size: cover;
+  background-position: center top;
+  padding: 240px 0 60px 0;
+  margin-top: -196px;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid var(--color-red);
+}
+
+.hero-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(185deg, rgba(9, 14, 26, 0.4) 0%, rgba(9, 14, 26, 0.8) 80%, rgba(9, 14, 26, 0.95) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: white;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.hero-main-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4.8rem;
+  color: white;
+  line-height: 0.95;
+  margin: 4px 0;
+  letter-spacing: -1px;
+}
+
+.hero-slogan-cursive {
+  font-family: 'Outfit', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--color-orange);
+  margin-top: -4px;
+  letter-spacing: 0.5px;
+}
+
+.hero-topics {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+}
+
+.hero-topics .bullet {
+  color: var(--color-red);
+  font-size: 1.2rem;
+}
+
+.hero-badge-container {
+  margin-top: 10px;
+}
+
+.hero-pill-badge {
+  background-color: var(--color-red);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 4px 14px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px rgba(214, 26, 33, 0.5);
+}
+
+.hero-visual-placeholder {
+  height: 100%;
+  min-height: 200px;
+}
+
+.hero-actions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn-whatsapp-hero {
+  background-color: #22a348; /* styled dark-green button matching image background */
+  color: white;
+  padding: 12px 28px;
+  border-radius: 6px; /* slightly squared corners matching the design */
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  box-shadow: 0 5px 15px rgba(34, 163, 72, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-whatsapp-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 163, 72, 0.5);
+  background-color: #1e8e3e;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 900px) {
+  .hero-section {
+    padding: 220px 0 40px 0;
+    margin-top: -196px;
+    min-height: auto;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .hero-text-content {
+    align-items: center;
+  }
+  
+  .hero-main-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-slogan-cursive {
+    font-size: 1.4rem;
+  }
+  
+  .hero-topics {
+    font-size: 0.9rem;
+  }
+  
+  .hero-visual-placeholder {
+    display: none;
+  }
+  
+  .hero-actions-container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: 2.6rem;
+  }
+  
+  .hero-slogan-cursive {
+    font-size: 1.15rem;
+  }
+  
+  .hero-topics {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .hero-topics .bullet {
+    display: none;
+  }
+}

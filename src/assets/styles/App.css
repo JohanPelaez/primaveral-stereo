@@ -1,0 +1,31 @@
+.breadcrumb-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 16px 0 16px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-gray);
+}
+
+.breadcrumb-home-link {
+  color: var(--color-orange);
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.breadcrumb-home-link:hover {
+  color: var(--text-white);
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.breadcrumb-current {
+  color: var(--text-white);
+  font-weight: 500;
+}
