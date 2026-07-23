@@ -1,7 +1,7 @@
 .about-view {
   padding: 40px;
   margin-top: 24px;
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-card-dark);
 }
 
 .about-header {
