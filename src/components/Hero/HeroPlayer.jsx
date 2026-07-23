@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AudioContext } from '../../context/AudioContext';
-import { Play, Pause, Volume2, VolumeX, MoreVertical, Loader2 } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Loader2, Users } from 'lucide-react';
 import '../../assets/styles/HeroPlayer.css';
 
 const HeroPlayer = () => {
@@ -11,12 +11,15 @@ const HeroPlayer = () => {
     isBuffering, 
     togglePlay, 
     changeVolume, 
-    toggleMute 
+    toggleMute,
+    currentSong 
   } = useContext(AudioContext);
 
   const handleVolumeChange = (e) => {
     changeVolume(parseFloat(e.target.value));
   };
+
+  const hasLiveSong = Boolean(currentSong?.title || currentSong?.song);
 
   return (
     <div className="hero-player glass-panel" id="hero_audio_player">
@@ -44,8 +47,12 @@ const HeroPlayer = () => {
             <span className="live-dot-red"></span>
             <span className="live-label-text">EN VIVO</span>
           </div>
-          <h3 className="player-title">Primaveral Stereo 104.4 FM</h3>
-          <p className="player-subtitle">la que todos escuchan</p>
+          <h3 className="player-title" title={hasLiveSong ? (currentSong.song || `${currentSong.artist} - ${currentSong.title}`) : 'Primaveral Stereo 104.4 FM'}>
+            {hasLiveSong ? (currentSong.song || `${currentSong.artist ? currentSong.artist + ' - ' : ''}${currentSong.title}`) : 'Primaveral Stereo 104.4 FM'}
+          </h3>
+          <p className="player-subtitle">
+            {hasLiveSong ? 'Primaveral Stereo 104.4 FM' : 'la que todos escuchan'}
+          </p>
         </div>
 
         {/* Waveform Equalizer */}
@@ -79,11 +86,6 @@ const HeroPlayer = () => {
             id="hero_volume_range"
           />
         </div>
-
-        {/* More options button */}
-        <button className="player-more-btn" title="Opciones" id="hero_more_options">
-          <MoreVertical size={20} />
-        </button>
       </div>
     </div>
   );

@@ -7,11 +7,65 @@ export const AudioProvider = ({ children }) => {
   const [volume, setVolume] = useState(0.8);
   const [isMuted, setIsMuted] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
-  
+
+  const [currentSong, setCurrentSong] = useState({
+    title: '',
+    artist: '',
+    song: '',
+    imageUrl: '',
+    listeners: 0,
+    isLive: true
+  });
+
   const streamUrl = 'https://icecasthd.net/proxy/primaveral/live';
+  const metadataUrl = 'https://icecasthd.net/rpc/primaveral/streaminfo.get';
   const audioRef = useRef(null);
 
+  // Fetch live stream song metadata
+  const fetchMetadata = async () => {
+    try {
+      const response = await fetch(metadataUrl);
+      if (!response.ok) return;
+      const json = await response.json();
+
+      if (json && json.type === 'result' && Array.isArray(json.data) && json.data.length > 0) {
+        const info = json.data[0];
+        const track = info.track || {};
+
+        let title = (track.title || '').trim();
+        let artist = (track.artist || '').trim();
+        let rawSong = (info.song || '').trim();
+        let imageUrl = track.imageurl || '';
+
+        // Clean up default placeholders
+        if (imageUrl.includes('nocover')) {
+          imageUrl = '';
+        }
+
+        // Clean up generic station name placeholders
+        if (title.toLowerCase().includes('my station name')) {
+          title = '';
+        }
+
+        setCurrentSong({
+          title,
+          artist,
+          song: rawSong,
+          imageUrl,
+          listeners: info.listeners || 0,
+          isLive: info.server === 'Online'
+        });
+      }
+    } catch (err) {
+      console.warn("Metadata fetch error:", err);
+    }
+  };
+
   useEffect(() => {
+    // Initial fetch and 10s interval polling
+    fetchMetadata();
+    const interval = setInterval(fetchMetadata, 10000);
+
     // Instantiate Audio on mount
     audioRef.current = new Audio();
     audioRef.current.preload = 'none';
@@ -36,6 +90,7 @@ export const AudioProvider = ({ children }) => {
     audio.addEventListener('error', handleError);
 
     return () => {
+      clearInterval(interval);
       audio.removeEventListener('play', handlePlay);
       audio.removeEventListener('pause', handlePause);
       audio.removeEventListener('waiting', handleWaiting);
@@ -48,7 +103,7 @@ export const AudioProvider = ({ children }) => {
 
   const togglePlay = () => {
     if (!audioRef.current) return;
-    
+
     if (isPlaying) {
       // For live streams, reset src to stop buffer downloading and release network resources
       audioRef.current.pause();
@@ -100,7 +155,8 @@ export const AudioProvider = ({ children }) => {
       togglePlay,
       changeVolume,
       toggleMute,
-      streamUrl
+      streamUrl,
+      currentSong
     }}>
       {children}
     </AudioContext.Provider>

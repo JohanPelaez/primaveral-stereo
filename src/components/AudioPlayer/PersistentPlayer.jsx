@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AudioContext } from '../../context/AudioContext';
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Radio, ListMusic, Loader2 } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Radio, Loader2, Users } from 'lucide-react';
 import '../../assets/styles/PersistentPlayer.css';
 
 const PersistentPlayer = () => {
@@ -11,12 +11,19 @@ const PersistentPlayer = () => {
     isBuffering,
     togglePlay,
     changeVolume,
-    toggleMute
+    toggleMute,
+    currentSong
   } = useContext(AudioContext);
 
   const handleVolumeChange = (e) => {
     changeVolume(parseFloat(e.target.value));
   };
+
+  const hasLiveSong = Boolean(currentSong?.title || currentSong?.song);
+  const songTitle = hasLiveSong 
+    ? (currentSong.song || `${currentSong.artist ? currentSong.artist + ' - ' : ''}${currentSong.title}`) 
+    : 'Primaveral Stereo 104.4 FM';
+  const coverUrl = currentSong?.imageUrl || '/favicon.png';
 
   return (
     <div className="persistent-player-bar" id="persistent_player_bar">
@@ -24,13 +31,15 @@ const PersistentPlayer = () => {
         {/* Left: Station info and small logo */}
         <div className="player-station-meta">
           <div className="station-logo-mini-container">
-            <img src="/favicon.png" alt="Primaveral Logo" className="station-logo-mini" />
+            <img src={coverUrl} alt="Primaveral Logo" className="station-logo-mini" />
           </div>
           <div className="station-meta-text">
-            <span className="station-meta-title">Primaveral Stereo 104.4 FM</span>
+            <span className="station-meta-title" title={songTitle}>{songTitle}</span>
             <div className="station-meta-status">
               <span className="live-bullet-pulse"></span>
-              <span className="live-status-lbl">EN VIVO - la que todos escuchan</span>
+              <span className="live-status-lbl">
+                {hasLiveSong ? 'EN VIVO • Primaveral Stereo' : 'EN VIVO - la que todos escuchan'}
+              </span>
             </div>
           </div>
 
@@ -44,12 +53,8 @@ const PersistentPlayer = () => {
           </div>
         </div>
 
-        {/* Center: Playback Controls */}
+        {/* Center: Play/Pause Playback Control */}
         <div className="player-playback-controls">
-          <button className="control-btn skip-btn" title="Emisora Anterior" id="pb_prev">
-            <SkipBack size={18} fill="currentColor" />
-          </button>
-
           <button
             onClick={togglePlay}
             className="control-btn play-btn-main"
@@ -65,13 +70,9 @@ const PersistentPlayer = () => {
               <Play size={20} fill="white" color="white" className="play-icon-offset" />
             )}
           </button>
-
-          <button className="control-btn skip-btn" title="Siguiente Emisora" id="pb_next">
-            <SkipForward size={18} fill="currentColor" />
-          </button>
         </div>
 
-        {/* Right: Volume & More Options */}
+        {/* Right: Volume & En Vivo Badge */}
         <div className="player-right-controls">
           {/* Volume Group */}
           <div className="volume-control-group">
@@ -96,16 +97,17 @@ const PersistentPlayer = () => {
             />
           </div>
 
-          {/* En Vivo indicator */}
+          {/* En Vivo & Listener count indicator */}
           <div className="live-pill-bottom">
             <Radio size={12} className="live-icon-bounce" />
             <span>EN VIVO</span>
+            {currentSong?.listeners > 0 && (
+              <span className="live-pill-count" title={`${currentSong.listeners} oyentes sintonizados`}>
+                <Users size={11} style={{ display: 'inline', marginLeft: '4px', marginRight: '2px' }} />
+                {currentSong.listeners}
+              </span>
+            )}
           </div>
-
-          {/* List Menu Icon */}
-          <button className="control-btn menu-list-btn" title="Lista de canales" id="pb_list_channels">
-            <ListMusic size={18} />
-          </button>
         </div>
       </div>
     </div>
