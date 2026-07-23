@@ -61,11 +61,11 @@ function AppContent() {
       {/* Tabs Menu Navigation Bar */}
       <Navbar currentView={currentView} setCurrentView={setCurrentView} />
 
+      {/* Full Width Hero Banner for active view */}
+      <Hero view={currentView} />
+
       {/* Breadcrumbs for sub-pages */}
       {renderBreadcrumbs()}
-
-      {/* Full Width Hero Banner for Home view */}
-      {currentView === 'home' && <Hero />}
 
       {/* Swappable Main Content Area */}
       <main className="main-content">

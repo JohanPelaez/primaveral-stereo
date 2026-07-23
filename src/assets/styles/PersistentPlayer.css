@@ -34,6 +34,10 @@
   min-width: 260px;
 }
 
+.player-station-meta .waveform-equalizer {
+  margin-left: 6px;
+}
+
 .station-logo-mini-container {
   width: 48px;
   height: 48px;

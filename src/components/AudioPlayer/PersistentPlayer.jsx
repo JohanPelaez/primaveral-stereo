@@ -33,6 +33,15 @@ const PersistentPlayer = () => {
               <span className="live-status-lbl">EN VIVO - la que todos escuchan</span>
             </div>
           </div>
+
+          {/* Equalizer animation bars */}
+          <div className={`player-visualizer waveform-equalizer ${isPlaying ? 'playing' : ''}`}>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+            <div className="waveform-bar"></div>
+          </div>
         </div>
 
         {/* Center: Playback Controls */}

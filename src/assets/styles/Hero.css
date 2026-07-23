@@ -1,11 +1,11 @@
 .hero-section {
   width: 100%;
-  min-height: 640px;
+  min-height: calc(100vh - 80px);
   position: relative;
   background-image: url('/gomez_plata.jpg');
   background-size: cover;
   background-position: center top;
-  padding: 240px 0 60px 0;
+  padding: 220px 0 40px 0;
   margin-top: -196px;
   display: flex;
   align-items: center;
@@ -196,5 +196,29 @@
   
   .hero-topics .bullet {
     display: none;
+  }
+}
+
+/* Internal Hero Section Variant */
+.hero-section.hero-internal {
+  min-height: calc(100vh - 80px);
+  padding-top: 220px;
+  padding-bottom: 40px;
+}
+
+.hero-section.hero-internal .hero-main-title {
+  font-size: 3.2rem;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .hero-section.hero-internal {
+    min-height: 380px;
+    padding-top: 210px;
+    padding-bottom: 30px;
+  }
+  
+  .hero-section.hero-internal .hero-main-title {
+    font-size: 2.5rem;
   }
 }
