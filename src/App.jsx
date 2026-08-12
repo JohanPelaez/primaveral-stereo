@@ -27,6 +27,15 @@ function AppContent() {
     }
   }, [theme]);
 
+  // Log listener IP connection per day automatically
+  useEffect(() => {
+    fetch('/api/track.php')
+      .then((res) => res.json())
+      .catch(() => {
+        // Silently handle if running in local dev environment without PHP server
+      });
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };

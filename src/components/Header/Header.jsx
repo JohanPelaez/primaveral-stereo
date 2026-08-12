@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SocialLinks from './SocialLinks';
-import { Radio, Sun, Moon } from 'lucide-react';
+import { Radio, Sun, Moon, Users } from 'lucide-react';
+import { AudioContext } from '../../context/AudioContext';
 import '../../assets/styles/Header.css';
 
 const Header = ({ setCurrentView, theme, toggleTheme }) => {
+  const { currentSong } = useContext(AudioContext);
+
   return (
     <header className="site-header">
       <div className="header-container">
@@ -40,7 +43,16 @@ const Header = ({ setCurrentView, theme, toggleTheme }) => {
             </div>
             <div className="live-text-wrapper">
               <span className="live-main-text">EN VIVO</span>
-              <span className="live-sub-text">LAS 24 HORAS</span>
+              <span className="live-sub-text">
+                {currentSong?.listeners > 0 ? (
+                  <>
+                    <Users size={11} style={{ display: 'inline', marginRight: '3px' }} />
+                    {currentSong.listeners} OYENTES
+                  </>
+                ) : (
+                  'LAS 24 HORAS'
+                )}
+              </span>
             </div>
           </div>
         </div>

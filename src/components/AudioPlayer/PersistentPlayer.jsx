@@ -31,15 +31,29 @@ const PersistentPlayer = () => {
         {/* Left: Station info and small logo */}
         <div className="player-station-meta">
           <div className="station-logo-mini-container">
-            <img src={coverUrl} alt="Primaveral Logo" className="station-logo-mini" />
+            <img 
+              src={coverUrl} 
+              alt="Primaveral Logo" 
+              className="station-logo-mini" 
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/favicon.png';
+              }}
+            />
           </div>
           <div className="station-meta-text">
             <span className="station-meta-title" title={songTitle}>{songTitle}</span>
             <div className="station-meta-status">
               <span className="live-bullet-pulse"></span>
               <span className="live-status-lbl">
-                {hasLiveSong ? 'EN VIVO • Primaveral Stereo' : 'EN VIVO - la que todos escuchan'}
+                {hasLiveSong ? 'EN VIVO • Primaveral' : 'EN VIVO'}
               </span>
+              {currentSong?.listeners > 0 && (
+                <span className="listeners-mobile-badge" title={`${currentSong.listeners} oyentes sintonizados`}>
+                  <Users size={10} className="users-icon-inline" />
+                  <span>{currentSong.listeners}</span>
+                </span>
+              )}
             </div>
           </div>
 

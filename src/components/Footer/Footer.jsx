@@ -1,9 +1,29 @@
-import React from 'react';
-import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin, Activity, Users } from 'lucide-react';
 import TikTokIcon from '../common/TikTokIcon';
 import '../../assets/styles/Footer.css';
 
 const Footer = () => {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/stats.php')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.status === 'success') {
+          setStats(data.summary);
+        }
+      })
+      .catch(() => {
+        // Fallback for local preview without PHP backend
+        setStats({
+          unique_listeners_today: 1,
+          total_hits_today: 1,
+          total_visits_all_time: 1
+        });
+      });
+  }, []);
+
   return (
     <footer className="site-footer">
       <div className="footer-container">
@@ -11,6 +31,14 @@ const Footer = () => {
         <div className="footer-brand">
           <img src="/logo.png" alt="Primaveral Stereo Logo" className="footer-logo" />
           <span className="footer-slogan">la que todos escuchan</span>
+          
+          {/* Visits counter under left slogan */}
+          {stats && (
+            <div className="footer-visits-pill" id="footer_visits_left">
+              <Users size={13} className="visits-icon" />
+              <span>Visitas acumuladas: <strong>{stats.total_visits_all_time.toLocaleString()}</strong></span>
+            </div>
+          )}
         </div>
 
         {/* Center Column: Social Follow */}
@@ -38,7 +66,7 @@ const Footer = () => {
             </li>
             <li>
               <Mail size={14} className="contact-icon" />
-              <span>info@primaveralstereo.com</span>
+              <span>Primaveralstereo104.4@gmail.com</span>
             </li>
             <li>
               <MapPin size={14} className="contact-icon" />
@@ -47,9 +75,15 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Extreme Right: Big glowing text slogan */}
+        {/* Extreme Right: Big glowing text slogan with live visits counter */}
         <div className="footer-glowing-text">
           <h2 className="glowing-slogan">LA QUE TODOS ESCUCHAN</h2>
+          {stats && (
+            <div className="glowing-visits-counter" id="footer_visits_counter">
+              <Activity size={14} className="glowing-pulse-icon" />
+              <span><strong>{stats.total_visits_all_time.toLocaleString()}</strong> visitas registradas</span>
+            </div>
+          )}
         </div>
       </div>
 

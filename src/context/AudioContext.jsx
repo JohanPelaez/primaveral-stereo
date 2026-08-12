@@ -68,7 +68,7 @@ export const AudioProvider = ({ children }) => {
 
     // Instantiate Audio on mount
     audioRef.current = new Audio();
-    audioRef.current.preload = 'none';
+    audioRef.current.preload = 'auto';
     audioRef.current.volume = volume;
 
     // Event listeners
@@ -88,6 +88,63 @@ export const AudioProvider = ({ children }) => {
     audio.addEventListener('waiting', handleWaiting);
     audio.addEventListener('playing', handlePlaying);
     audio.addEventListener('error', handleError);
+
+    // Automatic playback (Autoplay) logic with mobile gesture fallback
+    const startAutoplay = () => {
+      if (!audioRef.current) return;
+
+      const audio = audioRef.current;
+      audio.setAttribute('playsinline', 'true');
+      audio.setAttribute('webkit-playsinline', 'true');
+      audio.src = streamUrl;
+      audio.load();
+
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsBuffering(false);
+            setIsPlaying(true);
+          })
+          .catch((err) => {
+            console.warn("Mobile autoplay policy blocked direct play. Waiting for first touch/click interaction:", err);
+            setIsBuffering(false);
+            setIsPlaying(false);
+
+            // Universal Mobile Gesture Unlocker
+            const mobileEvents = ['touchstart', 'touchend', 'pointerdown', 'click', 'scroll'];
+
+            const unlockAudioOnMobileGesture = () => {
+              if (audioRef.current && (audioRef.current.paused || !audioRef.current.currentTime)) {
+                audioRef.current.setAttribute('playsinline', 'true');
+                audioRef.current.setAttribute('webkit-playsinline', 'true');
+                audioRef.current.src = streamUrl;
+                audioRef.current.load();
+                const p = audioRef.current.play();
+                if (p !== undefined) {
+                  p.then(() => {
+                    setIsBuffering(false);
+                    setIsPlaying(true);
+                  }).catch((e) => {
+                    console.error("Mobile unlock attempt:", e);
+                  });
+                }
+              }
+              // Cleanup listeners on first gesture execution
+              mobileEvents.forEach((evt) => {
+                window.removeEventListener(evt, unlockAudioOnMobileGesture, true);
+              });
+            };
+
+            mobileEvents.forEach((evt) => {
+              window.addEventListener(evt, unlockAudioOnMobileGesture, { capture: true, once: true });
+            });
+          });
+      }
+    };
+
+    startAutoplay();
 
     return () => {
       clearInterval(interval);

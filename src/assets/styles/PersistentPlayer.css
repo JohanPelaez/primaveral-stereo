@@ -90,6 +90,21 @@
   color: var(--text-gray);
 }
 
+.listeners-mobile-badge {
+  display: none; /* Hidden on desktop to avoid duplicate listener count */
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
 .live-listeners-pill {
   font-family: var(--font-body);
   font-size: 0.72rem;
@@ -253,15 +268,51 @@
     height: 70px;
     padding: 0 12px;
   }
+
+  .player-station-meta {
+    flex: 1;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .station-meta-text {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .station-meta-title {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   
   .station-logo-mini-container {
     display: none; /* Hide logo on mobile */
   }
   
+  .player-station-meta .waveform-equalizer {
+    display: flex !important;
+    height: 20px;
+    width: 26px;
+    gap: 2px;
+    margin-left: 4px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .player-station-meta .waveform-equalizer .waveform-bar {
+    width: 3px;
+  }
+
   .live-pill-bottom {
     display: none; /* Hide pill on mobile */
   }
   
+  .listeners-mobile-badge {
+    display: inline-flex; /* Show live listeners badge ONLY on mobile screens */
+  }
+
   .menu-list-btn {
     display: none;
   }

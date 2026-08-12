@@ -41,6 +41,31 @@
   transition: var(--transition-smooth);
 }
 
+.footer-visits-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  margin-left: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #94a3b8;
+  backdrop-filter: blur(4px);
+  transition: var(--transition-smooth);
+}
+
+.footer-visits-pill .visits-icon {
+  color: var(--color-orange);
+}
+
+.footer-visits-pill strong {
+  color: #f8fafc;
+}
+
 /* Headers for footer groups */
 .footer-socials h3, .footer-contacts h3 {
   font-family: var(--font-display);
@@ -104,7 +129,9 @@
 /* Glowing slogan */
 .footer-glowing-text {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
   height: 100%;
 }
 
@@ -118,6 +145,32 @@
   line-height: 1.2;
   text-align: right;
   width: 100%;
+}
+
+.glowing-visits-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  background: rgba(214, 26, 33, 0.12);
+  border: 1px solid rgba(214, 26, 33, 0.3);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: #f1f5f9;
+  box-shadow: 0 0 12px rgba(214, 26, 33, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.glowing-pulse-icon {
+  color: #25d366;
+  animation: pulse-green 2s infinite ease-in-out;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.18); }
 }
 
 /* Copyright */
