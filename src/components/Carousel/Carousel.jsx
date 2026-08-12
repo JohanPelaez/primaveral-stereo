@@ -6,15 +6,23 @@ const Carousel = () => {
   const images = [
     {
       src: '/carousel_church.png',
-      alt: 'Iglesia de Gómez Plata, Antioquia'
+      alt: 'Plaza principal y Templo Parroquial de Gómez Plata'
     },
     {
       src: '/carousel_park.png',
-      alt: 'Parque principal de Gómez Plata, Antioquia'
+      alt: 'Monumento en el Parque Principal de Gómez Plata'
     },
     {
-      src: '/carousel_lake.png',
-      alt: 'Represa Troneras en Gómez Plata, Antioquia'
+      src: '/gomez_plata.jpg',
+      alt: 'Panorámica de la calle tradicional con flores y templo'
+    },
+    {
+      src: '/booth_center.png',
+      alt: 'Cabina de locución e instalaciones de Primaveral Stereo 104.4 FM'
+    },
+    {
+      src: '/locutores_mic.png',
+      alt: 'Consola principal de sonido y micrófonos Shure'
     }
   ];
 

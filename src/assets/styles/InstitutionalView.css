@@ -54,6 +54,39 @@
   transition: var(--transition-smooth);
 }
 
+/* Day Tabs */
+.inst-day-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.inst-tab-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  transition: var(--transition-smooth);
+}
+
+.inst-tab-btn:hover {
+  color: var(--text-white);
+  background: var(--bg-glass-heavy);
+}
+
+.inst-tab-btn.active-inst-tab {
+  background-color: var(--color-green);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(34, 163, 72, 0.4);
+}
+
 /* Grid */
 .inst-grid {
   display: grid;
@@ -124,6 +157,13 @@
   height: 100%;
 }
 
+.inst-card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .inst-card-time {
   font-family: var(--font-display);
   font-weight: 700;
@@ -135,6 +175,17 @@
   width: fit-content;
 }
 
+.inst-card-category {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-gray);
+  background: var(--bg-glass-heavy);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-glass);
+}
+
 .inst-card-desc {
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -142,6 +193,21 @@
   line-height: 1.5;
   margin-top: 4px;
   transition: var(--transition-smooth);
+}
+
+.inst-footer-note {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  line-height: 1.6;
 }
 
 @media (max-width: 900px) {

@@ -21,6 +21,28 @@ const AboutView = () => {
           </p>
         </div>
 
+        {/* Real Station Showcase Grid */}
+        <div className="about-gallery-grid">
+          <div className="about-gallery-card">
+            <img src="/reception_room.jpg" alt="Sala de recepción y atención Primaveral Stereo" />
+            <div className="gallery-card-caption">
+              <span>Sala de Recepción y Atención al Oyente</span>
+            </div>
+          </div>
+          <div className="about-gallery-card">
+            <img src="/booth_center.png" alt="Cabina principal de locución" />
+            <div className="gallery-card-caption">
+              <span>Cabina Principal de Emisión 104.4 FM</span>
+            </div>
+          </div>
+          <div className="about-gallery-card">
+            <img src="/main_desk_console.jpg" alt="Consola Yamaha y máster de sonido" />
+            <div className="gallery-card-caption">
+              <span>Máster y Controles de Sonido</span>
+            </div>
+          </div>
+        </div>
+
         {/* Pillars / Values Grid */}
         <div className="values-grid">
           <div className="value-card">

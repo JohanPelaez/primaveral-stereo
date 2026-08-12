@@ -28,7 +28,7 @@ const HERO_CONFIGS = {
     slogan: 'Música, noticias y acompañamiento las 24 horas',
     topics: ['NOTICIAS', 'VARIEDAD', '24/7 EN VIVO'],
     badge: 'PARRILLA RADIAL',
-    bgImage: '/carousel_lake.png',
+    bgImage: '/carousel_church.png',
     isHome: false
   },
   speakers: {
@@ -92,7 +92,7 @@ const Hero = ({ view = 'home' }) => {
             <HeroPlayer />
 
             <a
-              href="https://wa.me/573201234567?text=Hola%20Primaveral%20Stereo!%20Un%20saludo..."
+              href="https://wa.me/573117973442?text=Hola%20Primaveral%20Stereo!%20Un%20saludo..."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp-hero"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Music, Info } from 'lucide-react';
+import { Clock, Info, Sparkles } from 'lucide-react';
 import '../assets/styles/ScheduleView.css';
 
 const ScheduleView = () => {
@@ -7,31 +7,94 @@ const ScheduleView = () => {
 
   const scheduleData = {
     weekday: [
-      { time: '05:00 AM - 07:00 AM', name: 'Amanecer Con Primaveral', host: 'Carlos Mario', genre: 'Música popular y campesina', desc: 'Despierta con la mejor energía, el café caliente y las noticias del campo.' },
-      { time: '07:00 AM - 12:00 M', name: 'Mañanas Campesinas', host: 'Don Gabriel', genre: 'Tropical, Vallenato y Popular', desc: 'Acompañamos a nuestros labriegos en su jornada diaria con música, saludos y recados veredales.' },
-      { time: '12:00 M - 03:00 PM', name: 'Mediodía Joven', host: 'Dj Anderson', genre: 'Urbano, Reggaetón y Pop', desc: 'El ritmo de la juventud de Gómez Plata con los éxitos mundiales.' },
-      { time: '03:00 PM - 07:00 PM', name: 'Tardes para Adultos', host: 'Adriana Ortiz', genre: 'Romántica, Baladas y Clásicos', desc: 'Un viaje al recuerdo con las canciones que marcaron tu vida.' },
-      { time: '07:00 PM - 10:00 PM', name: 'La Ruta Nocturna', host: 'Juan Pablo', genre: 'Música de Cantina y Variada', desc: 'La mejor compañía para cerrar el día con alegría.' }
+      {
+        time: '04:00 AM – 10:00 AM',
+        name: 'Alegría Mañanera',
+        genre: 'Popular, Vallenato, Tropical y del Recuerdo',
+        desc: 'Las madrugadas comienzan con el programa que despierta al Norte y Nordeste antioqueño. Alegría Mañanera acompaña a nuestros campesinos, transportadores, trabajadores y madrugadores con una variada selección de música popular, vallenata, tropical y del recuerdo. Además, ofrece noticias, información de interés, resultados de loterías, mensajes de servicio social y una permanente interacción con los oyentes a través de llamadas, mensajes y notas de voz.'
+      },
+      {
+        time: '10:00 AM – 12:00 M',
+        name: 'Son Sólo Melodías',
+        genre: 'Pop Latino, Salsa Romántica y Clásicos',
+        desc: 'El romanticismo llega a las mañanas con una selección de pop latino, salsa romántica y grandes clásicos del género romántico. Un espacio perfecto para quienes disfrutan de buena música mientras trabajan, están en casa, preparan el almuerzo o realizan sus actividades diarias.'
+      },
+      {
+        time: '12:00 M – 04:00 PM',
+        name: 'Crossover',
+        genre: 'Crossover y Éxitos de todos los géneros',
+        desc: 'Las tardes se llenan de ritmo con una programación crossover que reúne los mejores éxitos de todos los géneros musicales. Música para acompañar a quienes trabajan, estudian, conducen o disfrutan de la mejor compañía durante la jornada.'
+      },
+      {
+        time: '04:00 PM – 05:30 PM',
+        name: 'Regresando a Casa',
+        genre: 'Carrilera, Guasca, Vallenato Clásico y Antaño',
+        desc: 'El regreso a casa se vive con los grandes éxitos de antaño, música carrilera, guasca y vallenato clásico. Un espacio para recordar, cantar y terminar la tarde con la mejor compañía.'
+      },
+      {
+        time: '07:00 PM – Hasta el amanecer',
+        name: 'La Mejor Noche',
+        genre: 'Éxitos recientes, Clásicos y Variado',
+        desc: 'Las noches en Primaveral Stereo reúnen las canciones más sonadas, los clásicos de siempre y los éxitos más recientes de todos los géneros musicales para acompañar a quienes trabajan, viajan, descansan o disfrutan de la buena música hasta el amanecer.'
+      }
     ],
     saturday: [
-      { time: '06:00 AM - 10:00 AM', name: 'Sabores del Campo', host: 'Gabriel Arango', genre: 'Folclor y Tradición', desc: 'Un programa especial dedicado a resaltar las tradiciones de Gómez Plata.' },
-      { time: '10:00 AM - 02:00 PM', name: 'El Top 20 Primaveral', host: 'Dj Anderson', genre: 'Éxitos del momento', desc: 'El conteo oficial de las 20 canciones más pedidas de la semana.' },
-      { time: '02:00 PM - 07:00 PM', name: 'Tarde de Parranda', host: 'Carlos Mario', genre: 'Parrandera y Tropical', desc: 'Calentando motores para el fin de semana con los mejores ritmos bailables.' },
-      { time: '07:00 PM - 02:00 AM', name: 'Sábados de Fiesta', host: 'Dj en Vivo', genre: 'Crossover / Mezclas', desc: 'La fiesta oficial del Norte Antioqueño, mezclas y saludos en vivo.' }
+      {
+        time: '04:00 AM – 09:00 AM',
+        name: 'La Viejoteca del Fin de Semana',
+        genre: 'Merengues, Porros, Salsa Brava y Tropicales',
+        desc: 'El fin de semana comienza con toda la energía. Merengues, porros, salsa brava, tropicales y los grandes clásicos para bailar, cantar y empezar el sábado con la mejor actitud.'
+      },
+      {
+        time: '09:00 AM – 12:00 M',
+        name: 'Las 20 Más Prendidas',
+        genre: 'Conteo Musical Semanal Votado por la Audiencia',
+        desc: 'El conteo musical más esperado de la semana. Nuestros oyentes eligen con sus votos las canciones más sonadas y compiten por llevar a su artista favorito al primer lugar. Un programa lleno de emoción, participación e interacción con el público.'
+      },
+      {
+        time: '12:00 M – 05:00 PM',
+        name: 'Fin de Semana al Aire',
+        genre: 'Variedad Musical del Sábado',
+        desc: 'Las mejores canciones para disfrutar el sábado con una programación variada que acompaña reuniones familiares, paseos, viajes y momentos de descanso.'
+      },
+      {
+        time: '07:00 PM – Hasta el amanecer',
+        name: 'Fin de Semana al Aire (Noche de Fiesta)',
+        genre: 'Crossover y Fiesta Nocturna',
+        desc: 'La mejor música continúa durante toda la noche para seguir disfrutando del ambiente del fin de semana con todos los géneros musicales.'
+      }
     ],
     sunday: [
-      { time: '07:00 AM - 09:00 AM', name: 'Música y Fe', host: 'Transmisión Especial', genre: 'Especial Espiritual', desc: 'Acompañamiento espiritual y transmisión de la Santa Misa dominical.' },
-      { time: '09:00 AM - 01:00 PM', name: 'Domingos en Familia', host: 'Adriana Ortiz', genre: 'Música del recuerdo y boleros', desc: 'La banda sonora para el almuerzo y descanso familiar dominical.' },
-      { time: '01:00 PM - 06:00 PM', name: 'Deporte e Información', host: 'Equipo de Deportes', genre: 'Transmisiones / Deportes', desc: 'Cubrimiento de los eventos deportivos locales, regionales y nacionales.' },
-      { time: '06:00 PM - 10:00 PM', name: 'Retropop', host: 'Juan Pablo', genre: 'Clásicos 80s y 90s', desc: 'Lo mejor del rock y pop en español e inglés para cerrar el fin de semana.' }
+      {
+        time: '04:00 AM – 10:00 AM',
+        name: 'Desenguayabe',
+        genre: 'Popular, Vallenato y Grandes Clásicos',
+        desc: 'El domingo comienza con la mejor selección de música popular, vallenata y grandes clásicos para quienes amanecen disfrutando del fin de semana o simplemente desean iniciar el día con buena música y excelentes recuerdos.'
+      },
+      {
+        time: '10:00 AM – Hasta el amanecer',
+        name: 'Fin de Semana al Aire',
+        genre: 'Programación Variada Dominical',
+        desc: 'El resto del domingo continúa con una programación musical variada para acompañar cada momento antes de comenzar una nueva semana.'
+      }
+    ],
+    holiday: [
+      {
+        time: 'Lunes Festivos y Días Festivos (Todo el Día)',
+        name: 'Festivos al Aire',
+        genre: 'Mano a Mano, Especiales Temáticos e Interacción',
+        desc: 'Cada lunes festivo y en todos los días festivos, Primaveral Stereo presenta una programación especial con las mejores canciones de cada género musical, enfrentamientos de artistas en el tradicional Mano a Mano, especiales temáticos y la participación permanente de nuestros oyentes, quienes eligen a sus artistas favoritos mediante llamadas, mensajes y notas de voz.'
+      }
     ]
   };
 
   return (
     <div className="schedule-view glass-panel">
       <div className="schedule-header">
-        <h1 className="schedule-title">Nuestra Programación</h1>
-        <p className="schedule-subtitle">La mejor compañía las 24 horas del día</p>
+        <h1 className="schedule-title">Nuestra Programación Musical</h1>
+        <p className="schedule-subtitle">
+          En <strong>Primaveral Stereo 104.4 FM – La que todos escuchan</strong>, vivimos la radio las 24 horas del día con una programación pensada para acompañar cada momento de nuestros oyentes. Música, información, entretenimiento y la participación de nuestra audiencia hacen parte de cada uno de nuestros espacios.
+        </p>
       </div>
 
       {/* Tabs */}
@@ -54,6 +117,12 @@ const ScheduleView = () => {
         >
           Domingos
         </button>
+        <button 
+          onClick={() => setActiveTab('holiday')} 
+          className={`tab-btn ${activeTab === 'holiday' ? 'active-tab-orange' : ''}`}
+        >
+          Festivos
+        </button>
       </div>
 
       {/* Schedule list */}
@@ -68,8 +137,6 @@ const ScheduleView = () => {
             <div className="show-details">
               <h2 className="show-name">{item.name}</h2>
               <div className="show-meta">
-                <span className="show-host">Locutor: {item.host}</span>
-                <span className="show-meta-dot">•</span>
                 <span className="show-genre">Género: {item.genre}</span>
               </div>
               <p className="show-desc">{item.desc}</p>
@@ -79,8 +146,10 @@ const ScheduleView = () => {
       </div>
 
       <div className="schedule-footer-note">
-        <Info size={16} />
-        <span>Toda nuestra programación musical e informativa continúa en piloto automático durante las horas de la madrugada.</span>
+        <Sparkles size={18} style={{ color: 'var(--color-orange)', flexShrink: 0 }} />
+        <span>
+          En <strong>Primaveral Stereo 104.4 FM – La que todos escuchan</strong>, nuestra misión es acompañar a cada oyente con una programación cercana, entretenida y pensada para todos los gustos, los 365 días del año, llevando la mejor música, la información y la alegría a cada rincón del Norte y Nordeste antioqueño.
+        </span>
       </div>
     </div>
   );

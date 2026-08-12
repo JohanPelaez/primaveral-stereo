@@ -1,12 +1,13 @@
 import React from 'react';
 import { Facebook, Instagram, MessageCircle } from 'lucide-react';
+import TikTokIcon from '../common/TikTokIcon';
 import '../../assets/styles/SocialLinks.css';
 
 const SocialLinks = () => {
   return (
     <div className="social-links">
       <a 
-        href="https://facebook.com" 
+        href="https://www.facebook.com/share/19KAyDdcKZ/?mibextid=wwXIfr" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-btn facebook"
@@ -16,7 +17,7 @@ const SocialLinks = () => {
         <Facebook size={20} />
       </a>
       <a 
-        href="https://instagram.com" 
+        href="https://www.instagram.com/primaveralstereo104.4?igsh=Z25hZTVoMXNhODJ3&utm_source=qr" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-btn instagram"
@@ -26,7 +27,17 @@ const SocialLinks = () => {
         <Instagram size={20} />
       </a>
       <a 
-        href="https://wa.me/573201234567" 
+        href="https://www.tiktok.com/@primaveral.stereo" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="social-btn tiktok"
+        title="TikTok"
+        id="social_tiktok"
+      >
+        <TikTokIcon size={20} />
+      </a>
+      <a 
+        href="https://wa.me/573117973442" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-btn whatsapp"

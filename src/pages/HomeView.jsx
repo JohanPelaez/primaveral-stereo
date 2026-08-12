@@ -57,43 +57,43 @@ const HomeView = ({ setCurrentView }) => {
         <WidgetCard title="NUESTRA PROGRAMACIÓN" icon={<Calendar size={18} className="icon-blue" />}>
           <div className="schedule-list">
             <div className="schedule-item">
-              <div className="schedule-time bg-green-badge">07:00 AM - 12:00 M</div>
+              <div className="schedule-time bg-green-badge">04:00 AM - 10:00 AM</div>
               <div className="schedule-info">
-                <h4>Mañanas Campesinas</h4>
-                <p>Música tropical, vallenato y lo mejor para nuestras veredas y el campo.</p>
+                <h4>Alegría Mañanera</h4>
+                <p>Popular, vallenato, tropical, noticias y la interacción con nuestros oyentes.</p>
               </div>
             </div>
 
             <div className="schedule-item">
-              <div className="schedule-time bg-blue-badge">12:00 M - 03:00 PM</div>
+              <div className="schedule-time bg-blue-badge">10:00 AM - 12:00 M</div>
               <div className="schedule-info">
-                <h4>Mediodía Joven</h4>
-                <p>Reggaetón, música urbana y los éxitos que marcan tendencia.</p>
+                <h4>Son Sólo Melodías</h4>
+                <p>Pop latino, salsa romántica y grandes clásicos del género romántico.</p>
               </div>
             </div>
 
             <div className="schedule-item">
-              <div className="schedule-time bg-red-badge">03:00 PM - 07:00 PM</div>
+              <div className="schedule-time bg-red-badge">12:00 M - 04:00 PM</div>
               <div className="schedule-info">
-                <h4>Tardes para Adultos</h4>
-                <p>Baladas, música romántica y los clásicos que nunca pasan de moda.</p>
+                <h4>Crossover</h4>
+                <p>Los mejores éxitos de todos los géneros musicales para acompañar tu jornada.</p>
               </div>
             </div>
           </div>
 
           <p className="widget-footer-text" onClick={() => setCurrentView('schedule')}>
-            Y mucho más programación 24/7 para ti. Ver completa
+            Ver programación completa de la semana
           </p>
         </WidgetCard>
 
         {/* Widget 2: Programas Institucionales */}
         <WidgetCard title="PROGRAMAS INSTITUCIONALES" icon={<Building size={18} className="icon-green" />}>
           <div className="widget-img-container">
-            <img src="/press_room.png" alt="Reunión institucional" className="widget-img" />
+            <img src="/recording_mic.jpg" alt="Estudio de producción institucional" className="widget-img" />
           </div>
 
           <p className="widget-card-desc">
-            Espacios dedicados a informar sobre la gestión, proyectos y actividades de nuestras instituciones, la alcaldía y el desarrollo de nuestra comunidad.
+            Espacios abiertos a las Alcaldías, Hospital Santa Isabel, cooperativas, instituciones educativas, salud mental y servicios espirituales para toda la comunidad.
           </p>
 
           <button 
@@ -109,11 +109,11 @@ const HomeView = ({ setCurrentView }) => {
         {/* Widget 3: Nuestros Locutores */}
         <WidgetCard title="NUESTROS LOCUTORES" icon={<Radio size={18} className="icon-orange" />}>
           <div className="widget-img-container">
-            <img src="/locutores_mic.png" alt="Micrófono locutores" className="widget-img" />
+            <img src="/main_desk_console.jpg" alt="Consola máster de locución" className="widget-img" />
           </div>
 
           <p className="widget-card-desc">
-            Voces profesionales y carismáticas que te acompañan cada día con profesionalismo, alegría y pasión por hacer de la radio tu mejor compañía.
+            Voces profesionales y cercanas como Luis Guillermo Yepes Duque y Lili Santamaría te acompañan día a día con alegría, optimismo y la mejor compañía.
           </p>
 
           <button 

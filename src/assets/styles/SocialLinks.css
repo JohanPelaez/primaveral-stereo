@@ -34,6 +34,11 @@
   box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
 }
 
+.social-btn.tiktok:hover {
+  background: linear-gradient(135deg, #00f2fe 0%, #fe2c55 100%);
+  box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4);
+}
+
 .social-btn.whatsapp:hover {
   background-color: #25d366;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);

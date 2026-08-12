@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import TikTokIcon from '../common/TikTokIcon';
 import '../../assets/styles/Footer.css';
 
 const Footer = () => {
@@ -16,9 +17,10 @@ const Footer = () => {
         <div className="footer-socials">
           <h3>SÍGUENOS EN NUESTRAS REDES</h3>
           <div className="footer-social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="fb"><Facebook size={18} /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="ig"><Instagram size={18} /></a>
-            <a href="https://wa.me/573201234567" target="_blank" rel="noopener noreferrer" className="wa"><MessageCircle size={18} /></a>
+            <a href="https://www.facebook.com/share/19KAyDdcKZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="fb" title="Facebook"><Facebook size={18} /></a>
+            <a href="https://www.instagram.com/primaveralstereo104.4?igsh=Z25hZTVoMXNhODJ3&utm_source=qr" target="_blank" rel="noopener noreferrer" className="ig" title="Instagram"><Instagram size={18} /></a>
+            <a href="https://www.tiktok.com/@primaveral.stereo" target="_blank" rel="noopener noreferrer" className="tt" title="TikTok"><TikTokIcon size={18} /></a>
+            <a href="https://wa.me/573117973442" target="_blank" rel="noopener noreferrer" className="wa" title="WhatsApp"><MessageCircle size={18} /></a>
           </div>
         </div>
 
@@ -28,11 +30,11 @@ const Footer = () => {
           <ul className="contact-list">
             <li>
               <Phone size={14} className="contact-icon" />
-              <span>320 123 4567</span>
+              <span>311 797 3442</span>
             </li>
             <li>
               <MessageCircle size={14} className="contact-icon" />
-              <span>313 765 4321</span>
+              <span>311 797 3442</span>
             </li>
             <li>
               <Mail size={14} className="contact-icon" />

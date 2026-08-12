@@ -77,6 +77,7 @@
 
 .footer-social-icons a.fb:hover { background-color: #1877f2; border-color: transparent; }
 .footer-social-icons a.ig:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-color: transparent; }
+.footer-social-icons a.tt:hover { background: linear-gradient(135deg, #00f2fe 0%, #fe2c55 100%); border-color: transparent; }
 .footer-social-icons a.wa:hover { background-color: #25d366; border-color: transparent; }
 
 /* Contacts */
